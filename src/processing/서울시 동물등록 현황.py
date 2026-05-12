@@ -4,8 +4,8 @@ import korean_font
 # =====
 
 # [1. 동물등록 현황 데이터 전처리 및 병합]
-df_23 = pd.read_csv('2023년 서울시 동물등록 현황.csv', encoding='utf-8')
-df_24 = pd.read_csv('2024년 서울시 동물등록 현황.csv', encoding='utf-8')
+df_23 = pd.read_csv('./data/2023년 서울시 동물등록 현황.csv', encoding='utf-8')
+df_24 = pd.read_csv('./data/2024년 서울시 동물등록 현황.csv', encoding='utf-8')
 
 # 1) 연도 컬럼 부여
 df_23['연도'] = 2023
@@ -37,11 +37,13 @@ df_pet['작년계'] = df_pet['자치구'].map(df_dict)
 df_pet['등록증가율(%)'] = (( df_pet['계'] - df_pet['작년계'] ) / df_demo ) * 100
 
 # 4) '작년계' 지우기
-df_pet = df_pet.drop(columns=['작년_계'])
+df_pet = df_pet.drop(columns=['작년계'])
+df_pet = df_pet.reset_index( drop = True )
 
 # =====
 
 # [3. 확인]
 df_pet.info()
 print( df_pet.head() )
+print( df_pet.tail() )
 print( df_pet.isnull().sum() ) 
