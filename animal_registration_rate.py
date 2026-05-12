@@ -44,4 +44,4 @@ df_pet = df_pet.drop(columns=['작년_계'])
 # [3. 확인]
 df_pet.info()
 print( df_pet.head() )
-print( df_pet.isnull().sum() )
+print( df_pet.isnull().sum() ) 
