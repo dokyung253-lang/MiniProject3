@@ -1,0 +1,18 @@
+*** 폴더 소개 ***
+data : 데이터 폴더
+ > raw_data : 원본 데이터
+ > processed : 전처리된 데이터
+
+src : 코드 폴더
+ > models : 코드 파일
+
+results : 분석폴더 (모델 결과, 로그, 시각화 이미지 등)
+
+*** 커밋메세지 ***
+type + 이름 + 수정 내용
+예. feat: crime.py 전처리, 임도경 
+
+[ type ]
+feat: 새로운 기능 추가
+fix: 어떤 오류 해결(fix)
+chore: 정규 코드 유지보수

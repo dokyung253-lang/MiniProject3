@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import koreanfont
+import korean_font
 import seaborn as sns
 
 
