@@ -4,6 +4,8 @@ import koreanfont
 import seaborn as sns
 
 
+# 유기동물보호현황
+
 # csv 파일 호출
 data1 = pd.read_csv(r'./newFolder/유기동물보호현황.csv' , encoding='utf-8-sig' )
 
@@ -42,11 +44,40 @@ df_2024['연도'] = 2024
 
 df_final = pd.concat([df_2023 , df_2024] , ignore_index=True )
 
-df_final = df_final[~df_final['자치구별'].str.contains('소계|합계' , na=False)]
+df_final = df_final[~df_final['자치구별'].str.contains('소계|합계|자치구' , na=False)]
+# 번호(인덱스)가 중간에 비지 않게 새로 매기기
+df_final = df_final.reset_index(drop=True)
 
 for col in col_names[1:]:
     df_final[col] = pd.to_numeric( df_final[col] , errors='coerce' ).fillna(0)
 
 
-print(df_final.info())
-print(df_final['연도'].value_counts())
+# 항목별 리스트화
+categories = ['소계','인도(주인)','입양_기증','폐사안락사','계류방사']
+
+for category in categories :
+    df_final[f'전체_{category}'] = df_final[f'개_{category}'] + df_final[f'고양이_{category}'] + df_final[f'기타_{category}']
+
+
+
+target_cols = ['자치구별' , '연도'] + [f'전체_{category}' for category in categories]
+
+df_report = df_final[target_cols].copy()
+
+print("------------------------------------- 유기동물보호현황 -------------------------------------")
+print(df_report.head())
+print(df_report.info())
+
+# 가설 : 서울 자치구별 반려동물 등록률이 높을수록 유기 보호 동물 수는 줄어들 것이다.
+# 유기 동물 보호수
+
+# 24년
+df_2024 = df_report[df_report['연도'] == 2024]
+rank_2024 = df_2024[ ['자치구별', '전체소계'] ]
+
+
+
+# 가설 : 서울 자치구별 반려동물 등록률이 높은 자치구의 경우, 안락사의 비율은 낮을 것이다.
+# 안락사율
+
+
