@@ -37,7 +37,7 @@ df_pet['작년계'] = df_pet['자치구'].map(df_dict)
 df_pet['등록증가율(%)'] = (( df_pet['계'] - df_pet['작년계'] ) / df_demo ) * 100
 
 # 4) '작년계' 지우기
-df_pet = df_pet.drop(columns=['작년_계'])
+df_pet = df_pet.drop(columns=['작년계'])
 
 # =====
 
