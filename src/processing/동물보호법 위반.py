@@ -9,6 +9,11 @@ df = pd.read_csv(
     encoding='utf-8'
 )
 
+# 컬럼 이름에서 _ → " " 치환
+df.columns = df.columns.str.replace('_', ' ')
+# 결측치 대체
+df['동물보호법_위반건수'] = df['동물보호법 위반건수'].replace('U', 'unknown')
+
 # 형변환
 for col in ['2023', '2024']:
     df[col] = pd.to_numeric(df[col], errors='coerce')
@@ -17,3 +22,6 @@ print(df)
 # 파생변수 생성
 df['증감률_%'] = (df['2024'] - df['2023']) / df['2023'] * 100
 print (df['증감률_%'])
+
+# CSV 파일로 내보내기
+df.to_csv('data/동물보호법_위반_처리결과.csv', index=False, encoding='utf-8-sig')
