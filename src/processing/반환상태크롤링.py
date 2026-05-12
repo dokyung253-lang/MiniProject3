@@ -1,5 +1,6 @@
 import asyncio
 from playwright.async_api import async_playwright
+import pandas as pd
 
 async def pet():
     async with async_playwright() as p:
@@ -84,6 +85,13 @@ async def pet():
         print(f"[전체 수집 데이터]: {len(results)}건")
         print(f"[등록번호가 있는 거] : {len(with_reg)}건")
         print(f"[등록번호가 없는 거] : {len(without_reg)}건")
+
+        df = pd.DataFrame(results)
+        df.to_csv('./src/processing/반환상태크롤링.csv', 
+                  index=False, 
+                  encoding='utf-8',
+                  na_rep='Unknown', 
+                  header=True)
         await browser.close()
 
 if __name__ == "__main__":
