@@ -6,6 +6,8 @@ import seaborn as sns
 
 # 유기동물보호현황
 
+# 유기동물보호현황
+
 # csv 파일 호출
 data1 = pd.read_csv(r'./newFolder/유기동물보호현황.csv' , encoding='utf-8-sig' )
 
@@ -44,6 +46,9 @@ df_2024['연도'] = 2024
 
 df_final = pd.concat([df_2023 , df_2024] , ignore_index=True )
 
+df_final = df_final[~df_final['자치구별'].str.contains('소계|합계|자치구' , na=False)]
+# 번호(인덱스)가 중간에 비지 않게 새로 매기기
+df_final = df_final.reset_index(drop=True)
 df_final = df_final[~df_final['자치구별'].str.contains('소계|합계|자치구' , na=False)]
 # 번호(인덱스)가 중간에 비지 않게 새로 매기기
 df_final = df_final.reset_index(drop=True)
