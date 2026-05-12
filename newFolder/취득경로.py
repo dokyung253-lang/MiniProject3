@@ -6,5 +6,3 @@ df = pd.read_csv(r'./newFolder/pet_shop_acquisition.csv', encoding='utf-8')
 print( df.head() )
 df.info()
 print( df.isnull().sum() )
-
-# 결측
