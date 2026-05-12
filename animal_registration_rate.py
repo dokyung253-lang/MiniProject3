@@ -38,10 +38,12 @@ df_pet['등록증가율(%)'] = (( df_pet['계'] - df_pet['작년계'] ) / df_dem
 
 # 4) '작년계' 지우기
 df_pet = df_pet.drop(columns=['작년계'])
+df_pet = df_pet.reset_index( drop = True )
 
 # =====
 
 # [3. 확인]
 df_pet.info()
 print( df_pet.head() )
+print( df_pet.tail() )
 print( df_pet.isnull().sum() ) 
