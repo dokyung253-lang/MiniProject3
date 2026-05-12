@@ -7,8 +7,8 @@ import korean_font
 # =====
 
 # [1. 동물등록 현황 데이터 전처리 및 병합]
-df_23 = pd.read_csv('./01_2324pet/2023년 서울시 동물등록 현황.csv', encoding='utf-8')
-df_24 = pd.read_csv('./01_2324pet/2024년 서울시 동물등록 현황.csv', encoding='utf-8')
+df_23 = pd.read_csv('2023년 서울시 동물등록 현황.csv', encoding='utf-8')
+df_24 = pd.read_csv('2024년 서울시 동물등록 현황.csv', encoding='utf-8')
 
 # 1) 연도 컬럼 부여
 df_23['연도'] = 2023
@@ -25,7 +25,7 @@ for col in number_cols:
 # =====
 
 # [2. 가구수 데이터 평탄화 전처리]
-df_h = pd.read_csv('./01_2324pet/seoul_household.csv', skiprows=5, header=None, encoding='utf-8')
+df_h = pd.read_csv('seoul_household.csv', skiprows=5, header=None, encoding='utf-8')
 
 # 1) 2023 가구수 데이터 새로 만들기
 df_h_23 = df_h[ [1, 2] ].copy()
