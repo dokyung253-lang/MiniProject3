@@ -31,8 +31,8 @@ df_h = pd.read_csv('./01_2324pet/seoul_household.csv', skiprows=5, header=None, 
 df_h_23 = df_h[ [1, 2] ].copy()
 df_h_23.columns = ['자치구', '서울가구수']
 df_h_23['연도'] = 2023
+#print(df_h)
 
-print(df_h)
 # 2) 2024 가구수 데이터 새로 만들기
 df_h_24 = df_h[ [1, 22] ].copy()
 df_h_24.columns = ['자치구', '서울가구수']
@@ -56,6 +56,7 @@ df_final = pd.merge( df_pet , df_household , on=['자치구', '연도'], how='in
 # 2) 파생변수
 df_final['동물등록률'] = ( df_final['계'] / df_final['서울가구수'] ) * 100
 
-print(df_final.head())
-print(f"동물등록 데이터 행 개수: {len(df_pet)}")
-print(f"최종 병합 데이터 행 개수: {len(df_final)}")
+# print(df_final.head())
+# print(f"동물등록 데이터 행 개수: {len(df_pet)}")
+# print(f"최종 병합 데이터 행 개수: {len(df_final)}")
+df_final.info()
