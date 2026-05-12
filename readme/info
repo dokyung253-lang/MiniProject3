@@ -1,0 +1,8 @@
+data : 데이터 폴더
+ > raw_data : 원본 데이터
+ > processed : 전처리된 데이터
+
+src : 코드 폴더
+ > models : 코드 파일
+
+results : 분석폴더 (모델 결과, 로그, 시각화 이미지 등)
