@@ -4,8 +4,8 @@ import korean_font
 # =====
 
 # [1. 동물등록 현황 데이터 전처리 및 병합]
-df_23 = pd.read_csv('2023년 서울시 동물등록 현황.csv', encoding='utf-8')
-df_24 = pd.read_csv('2024년 서울시 동물등록 현황.csv', encoding='utf-8')
+df_23 = pd.read_csv('./data/2023년 서울시 동물등록 현황.csv', encoding='utf-8')
+df_24 = pd.read_csv('./data/2024년 서울시 동물등록 현황.csv', encoding='utf-8')
 
 # 1) 연도 컬럼 부여
 df_23['연도'] = 2023
