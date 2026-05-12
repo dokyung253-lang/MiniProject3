@@ -9,7 +9,7 @@ import seaborn as sns
 # 유기동물보호현황
 
 # csv 파일 호출
-data1 = pd.read_csv(r'./newFolder/유기동물보호현황.csv' , encoding='utf-8-sig' )
+data1 = pd.read_csv(r'./data/유기동물보호현황.csv' , encoding='utf-8-sig' )
 
 # 판다스 병합
 df = pd.concat( [data1] , ignore_index=True )
