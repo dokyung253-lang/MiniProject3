@@ -1,8 +1,9 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 import korean_font
 
+# =====
+# << 주의 >>
+# '서울가구수'는 동물등록률과 관련 없이 서울 자치구 당 전체 가구 수를 의미합니다.
 # =====
 
 # [1. 동물등록 현황 데이터 전처리 및 병합]
@@ -28,12 +29,13 @@ df_h = pd.read_csv('./01_2324pet/seoul_household.csv', skiprows=5, header=None, 
 
 # 1) 2023 가구수 데이터 새로 만들기
 df_h_23 = df_h[ [1, 2] ].copy()
-df_h_23.columns = ['자치구', '가구수']
+df_h_23.columns = ['자치구', '서울가구수']
 df_h_23['연도'] = 2023
 
+print(df_h)
 # 2) 2024 가구수 데이터 새로 만들기
 df_h_24 = df_h[ [1, 22] ].copy()
-df_h_24.columns = ['자치구', '가구수']
+df_h_24.columns = ['자치구', '서울가구수']
 df_h_24['연도'] = 2024
 
 # 3) 가구수 데이터 통합
@@ -42,7 +44,7 @@ df_household['자치구'] = df_household['자치구'].str.strip()
 df_household = df_household[ ~df_household['자치구'].isin( ['소계', '합계'] ) ]
 
 # 4) 가구수 수치 형변환
-df_household['가구수'] = pd.to_numeric(df_household['가구수'].astype(str).str.replace(',', ''), errors='coerce')
+df_household['서울가구수'] = pd.to_numeric(df_household['서울가구수'].astype(str).str.replace(',', ''), errors='coerce')
 #print(df_household)
 
 # =====
@@ -52,6 +54,8 @@ df_household['가구수'] = pd.to_numeric(df_household['가구수'].astype(str).
 df_final = pd.merge( df_pet , df_household , on=['자치구', '연도'], how='inner' )
 
 # 2) 파생변수
-df_final['동물등록률'] = ( df_final['계'] / df_final['가구수'] ) * 100
+df_final['동물등록률'] = ( df_final['계'] / df_final['서울가구수'] ) * 100
 
 print(df_final.head())
+print(f"동물등록 데이터 행 개수: {len(df_pet)}")
+print(f"최종 병합 데이터 행 개수: {len(df_final)}")
