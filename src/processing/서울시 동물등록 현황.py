@@ -34,7 +34,7 @@ df_dict = df_pet[df_pet['연도'] == 2023].set_index('자치구')['계'].to_dict
 df_pet['작년계'] = df_pet['자치구'].map(df_dict)
 
 # 3) 증가율: (올해 계 - 작년 계) / 서울시 전체 증가량 * 100
-df_pet['등록증가율(%)'] = (( df_pet['계'] - df_pet['작년계'] ) / df_demo ) * 100
+df_pet['등록증가율(%)'] = ((( df_pet['계'] - df_pet['작년계'] ) / df_demo ) * 100).round(2)
 
 # 4) '작년계' 지우기
 df_pet = df_pet.drop(columns=['작년계'])
@@ -42,8 +42,12 @@ df_pet = df_pet.reset_index( drop = True )
 
 # =====
 
-# [3. 확인]
+# [3. 확인 후 csv 파일로 내보내기]
+# 1) 확인
 df_pet.info()
 print( df_pet.head() )
 print( df_pet.tail() )
-print( df_pet.isnull().sum() ) 
+print( df_pet.isnull().sum() )
+
+# 2) 내보내기
+df_pet.to_csv('./data/animal_registration_rate.csv', index=False, encoding='utf-8-sig')
