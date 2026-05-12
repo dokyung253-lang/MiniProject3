@@ -41,7 +41,7 @@ df_h_24['연도'] = 2024
 # 3) 가구수 데이터 통합
 df_household = pd.concat( [df_h_23, df_h_24] , ignore_index=True )
 df_household['자치구'] = df_household['자치구'].str.strip()
-df_household = df_household[ ~df_household['자치구'].isin( ['소계', '합계'] ) ]
+df_household = df_household[ ~df_household['자치구'].isin( ['소계'] ) ]
 
 # 4) 가구수 수치 형변환
 df_household['서울가구수'] = pd.to_numeric(df_household['서울가구수'].astype(str).str.replace(',', ''), errors='coerce')
