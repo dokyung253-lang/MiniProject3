@@ -1,0 +1,16 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import korean_font
+
+# csv 파일 읽기
+df = pd.read_csv(
+    'data/동물보호법 위반.csv',
+    header=0,
+    encoding='utf-8'
+)
+
+# 형변환
+for col in ['2023', '2024']:
+    df[col] = pd.to_numeric(df[col], errors='coerce')
+print(df)
+
