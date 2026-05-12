@@ -60,7 +60,7 @@ for category in categories :
 
 
 
-target_cols = ['자치구별' , '연도'] + [f'전체_{category}' for category in categories]
+target_cols = ['자치구별' , '연도' , '전체_소계' , '전체_폐사안락사' , '안락사율' ] + [f'전체_{category}' for category in categories]
 
 df_report = df_final[target_cols].copy()
 
@@ -87,5 +87,7 @@ print( rank_2024 )
 # 가설 : 서울 자치구별 반려동물 등록률이 높은 자치구의 경우, 안락사의 비율은 낮을 것이다.
 # 안락사율
 df_final['안락사율'] = (df_final['전체_폐사안락사'] / df_final['전체_소계'] * 100).fillna(0)
-
-
+print("-------- 23년 자치구별 안락사율 현황 --------")
+print( df_report[df_report['연도'] == 2023].sort_values(by='안락사율'))
+print("-------- 24년 자치구별 안락사율 현황 --------")
+print( df_report[df_report['연도'] == 2024].sort_values(by='안락사율'))
