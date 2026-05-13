@@ -41,3 +41,5 @@ buy_report = buy_final[['자치구별' , '연도' , '펫샵_구매비중' , '그
 
 print("-------- 24년도 반려동물 취득 경로 현황 --------")
 print( buy_report )
+
+buy_report.to_csv('./data/wherefrom.csv', index=False, encoding='utf-8-sig')
