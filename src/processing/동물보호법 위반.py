@@ -19,7 +19,7 @@ print(df)
 
 # 파생변수 생성
 df['증감률(%)'] = (df['2024'] - df['2023']) / df['2023'] * 100
-print (df['증감률(%)'])
+print(df)
 
 # CSV 파일로 내보내기
-df.to_csv('data/동물보호법_위반_처리결과.csv', index=False, encoding='utf-8-sig')
+df.to_csv('data/동물보호법 위반.csv', index=False, encoding='utf-8-sig')
