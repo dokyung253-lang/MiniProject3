@@ -94,3 +94,5 @@ print("-------- 23년 자치구별 안락사율 현황 --------")
 print( df_report[df_report['연도'] == 2023].sort_values(by='안락사율'))
 print("-------- 24년 자치구별 안락사율 현황 --------")
 print( df_report[df_report['연도'] == 2024].sort_values(by='안락사율'))
+
+#df_report.to_csv('./data/protection_status.csv', index=False, encoding='utf-8-sig')
