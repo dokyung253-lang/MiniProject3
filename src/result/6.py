@@ -55,6 +55,5 @@ lines2, labels2 = retu.get_legend_handles_labels()
 retu.legend(lines + lines2, labels + labels2, loc='upper right', fontsize=12)
 
 plt.title('2024년 서울 자치구별 유기동물 등록율 및 반환율 비교')
-
+plt.savefig('./src/chart/save_chart6.png')
 plt.show()
-# plt.savefig('./파일명/save_chart6.png')
