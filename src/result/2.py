@@ -9,12 +9,20 @@ vio = pd.read_csv('data/동물보호법_위반_처리결과.csv')   # 전국 단
 # 2024년도 데이터만 사용 (index 25 이후)
 reg_2024 = reg.iloc[25:].copy()
 
-# 1. 자치구별 등록증가율 시각화
-plt.figure(figsize=(12,6))
-colors = reg_2024['등록증가율(%)'].apply(lambda x: 'green' if x > 0 else 'red')
-plt.bar(reg_2024['자치구'], reg_2024['등록증가율(%)'], color=colors)
-plt.title("2024 서울 자치구별 반려동물 등록증가율")
-plt.xlabel("자치구")
-plt.ylabel("등록증가율(%)")
-plt.xticks(rotation=45)
+# 서울 전체 평균 등록증가율 계산
+seoul_rate = reg_2024['등록증가율(%)'].mean()
+
+# 전국 단위 위반 건수 증감률 추출
+vio_rate = float(vio.loc[0, '증감률_%'])  # 예: -4.18%
+
+# 두 지표를 하나의 그래프로 비교
+plt.figure(figsize=(8,6))
+plt.bar(['동물등록증가율 평균(%)', '동물보호법 위반건수 증가율(%)'], [seoul_rate, vio_rate],
+        color=['skyblue','salmon'])
+plt.axhline(0, color='gray', linestyle='--')
+plt.title("서울시 반려동물등록률과 위반률 변화")
+plt.ylabel("증가율(%)")
 plt.show()
+
+print(f"서울시 동물등록 증가율 평균: {seoul_rate:.2f}%")
+print(f"전국 동물보호법 위반 건수 증가율: {vio_rate:.2f}%")
