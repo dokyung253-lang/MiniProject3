@@ -26,8 +26,8 @@ fig, ax = plt.subplots(figsize=(10, 5))
 
 
 
-ax.bar( x_indexes - 0.2 , df_2024['안락사율']  , width=width ,  color = 'blue' , label = '안락사율(%)' )
-ax.bar( x_indexes + 0.3 , df_2024['등록증가율(%)'] , width=width , color = 'green' , label = '등록증가율(%)')
+ax.bar( x_indexes - 0.2 , df_2024['안락사율']  , width=width ,  color = 'aqua' , label = '안락사율(%)' )
+ax.bar( x_indexes + 0.3 , df_2024['등록증가율(%)'] , width=width , color = "#FFADE6" , label = '등록증가율(%)')
 
 ax.set_xticks(x_indexes)
 ax.set_xticklabels(df_2024['자치구'], rotation=45)
