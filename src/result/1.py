@@ -21,5 +21,7 @@ counts.plot(
     labels=['등록', '미등록']
 )
 plt.title("반환된 반려동물 중 등록/미등록 비율")
-plt.ylabel("")  # y축 라벨 제거
+plt.ylabel("") 
+plt.legend()
 plt.show()
+plt.savefig('./src/chart/save_chart1.png')

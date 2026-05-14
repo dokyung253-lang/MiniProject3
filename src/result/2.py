@@ -17,12 +17,14 @@ vio_rate = float(vio.loc[0, '증감률_%'])  # 예: -4.18%
 
 # 두 지표를 하나의 그래프로 비교
 plt.figure(figsize=(8,6))
-plt.bar(['동물등록증가율 평균(%)', '동물보호법 위반건수 증가율(%)'], [seoul_rate, vio_rate],
-        color=['skyblue','salmon'])
+plt.bar_label(
+        plt.bar(['동물등록증가율 평균(%)', '동물보호법 위반건수 증가율(%)'], [seoul_rate, vio_rate],
+                color=['skyblue','salmon']), 
+        fmt='%.2f%%', label_type='center'
+)        
 plt.axhline(0, color='gray', linestyle='--')
 plt.title("서울시 반려동물등록률과 위반률 변화")
 plt.ylabel("증가율(%)")
+plt.legend()
 plt.show()
-
-print(f"서울시 동물등록 증가율 평균: {seoul_rate:.2f}%")
-print(f"전국 동물보호법 위반 건수 증가율: {vio_rate:.2f}%")
+plt.savefig('./src/chart/save_chart2.png')
