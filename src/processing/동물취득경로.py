@@ -26,7 +26,7 @@ buy_final = buy_2024[~buy_2024['자치구별'].str.contains('구분별|지역소
 
 
 # 총합
-path_cols = col_names = ['펫샵구매' ,'친척친구_무료', '친척친구_유료', '유기동물입양', '반려동물의 자식', '기타']
+path_cols = col_names = ['펫샵구매' , '인터넷구매' , '친척친구_무료', '친척친구_유료', '유기동물입양', '반려동물의 자식', '기타']
 buy_final['총합'] = buy_final[path_cols].sum(axis=1)
 
 # 펫샵구매율
