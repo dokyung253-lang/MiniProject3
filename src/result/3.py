@@ -26,15 +26,20 @@ fig, ax = plt.subplots(figsize=(10, 5))
 
 
 
-ax.bar( x_indexes - 0.2 , df_2024['안락사율']  , width=width ,  color = 'aqua' , label = '안락사율(%)' )
+ax.bar( x_indexes - 0.2 , df_2024['전체_소계']  , width=width ,  color = 'aqua' , label = '유기동물보호수' )
 ax.bar( x_indexes + 0.3 , df_2024['등록증가율(%)'] , width=width , color = "#FFADE6" , label = '등록증가율(%)')
+
+# 보호수 평균선 (하늘색 점선)
+avg_protection = df_2024['전체_소계'].mean()
+ax.axhline(avg_protection, color='darkcyan', linestyle='--', linewidth=1, label='보호수 평균')
 
 ax.set_xticks(x_indexes)
 ax.set_xticklabels(df_2024['자치구'], rotation=45)
 
-ax.legend() # 범례 표시
+ax.legend(loc='upper right',ncol=2) # 범례 표시
 
-plt.title('2024년 자치구별 안락사율과 동물등록증가율 그래프') 
+plt.title('2024년 자치구별 유기동물보호수와 동물등록증가율 그래프') 
 plt.tight_layout()
 plt.show()
 
+plt.savefig('./src/chart/save_chart3.png')
