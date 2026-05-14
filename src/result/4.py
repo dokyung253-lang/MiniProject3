@@ -75,3 +75,4 @@ plt.legend(bbox_to_anchor=(1.02, 1), ncol=2 , loc='upper left', borderaxespad=0,
 plt.tight_layout()
 plt.grid(True, linestyle='--', alpha=0.5) # 격자
 plt.show()
+plt.savefig('./src/chart/save_chart4.png')
