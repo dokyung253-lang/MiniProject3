@@ -28,7 +28,7 @@ sns.scatterplot(
     x='등록증가율(%)',
     y='안락사율',
     hue='자치구',        # 색 나누기
-    palette='tab20',    # 색
+    palette='nipy_spectral',    # 색
     s=150,              # size라고 쓰니까 이상하게 나옴
     alpha=0.9,
     edgecolor='white'   # 테두리 색
